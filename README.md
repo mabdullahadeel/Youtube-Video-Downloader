@@ -31,12 +31,12 @@ mkdir any_name
 ```
 ## Setting up Virtual Environment
 ```bash
-python -m virtualenv env
-env\Scripts\activate (windows) | Source\bin\activate (mac)
+python -m virtualenv env | python -m venv env (if virtualenv is not installed)
+env\Scripts\activate (windows) | source env/bin/activate (Mac, Linux)
 git clone -commit hash
 
 # installing dependencies
-python -r requirements.txt
+pip install -r requirements.txt
 ```
 
 #### You are set to develop amazing new features 🙂
