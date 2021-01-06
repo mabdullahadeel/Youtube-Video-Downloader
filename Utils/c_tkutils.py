@@ -16,10 +16,9 @@ class DownloadMenu:
         self.kwargs = kwargs
 
     def show_result_frame(self):
-        self.kwargs["menu_frame"].pack()
         result_frame = LabelFrame(self.root_window)
         result_frame.configure(background="#2b2929")
-        result_frame.grid(row=3, column=0, columnspan=2, rowspan=4, padx=(2, 2), pady=(0, 2))
+        result_frame.grid(row=3, column=0, columnspan=2, rowspan=4, padx=(2, 2), pady=(0, 10))
 
         resolution_options = {}
 
@@ -51,7 +50,6 @@ class DownloadMenu:
             self.kwargs["url_entry"].delete(0, END)
             result_frame.destroy()
             self.kwargs["search_button"]["state"] = NORMAL
-            self.kwargs["menu_frame"].pack_forget()
 
         def download_video():
             if resolution_dropdown.get():
@@ -132,24 +130,24 @@ class DownloadMenu:
 
         title_frame = LabelFrame(result_frame, borderwidth=0, highlightthickness=0)
         title_frame.configure(background="#2b2929")
-        title_frame.grid(row=0, column=1, padx=(150, 10), pady=5, sticky=W)
+        title_frame.grid(row=0, column=1, padx=(150, 10), pady=(10, 40), sticky=W)
 
         title = Label(title_frame, text=self.kwargs["title"], font=("bold", 12), bg="#2b2929", fg="white", wraplength=500)
         title.grid(row=0, column=0, sticky=W)
 
         resolution_label = Label(result_frame, text="Resolution", font=('bold', 14), bg="#2b2929", fg="white")
-        resolution_label.grid(row=1, column=0, pady=4, sticky=W)
+        resolution_label.grid(row=1, column=0, pady=8, sticky=W)
         resolution_dropdown_value = StringVar()
         resolution_dropdown = ttk.Combobox(result_frame, textvariable=resolution_dropdown_value, width=33,
                                            font=('bold', 14))
         resolution_dropdown['values'] = [k for k in resolution_options]
-        resolution_dropdown.grid(row=1, column=1, pady=4, padx=(150, 10), sticky=W)
+        resolution_dropdown.grid(row=1, column=1, pady=8, padx=(150, 10), sticky=W)
 
         file_name = Label(result_frame, text='File Name', font=('bold', 14), bg="#2b2929", fg="white")
-        file_name.grid(row=2, column=0, pady=4, sticky=W)
+        file_name.grid(row=2, column=0, pady=8, sticky=W)
         file_name_text = StringVar()
         file_name_entry = Entry(result_frame, textvariable=file_name_text, width=35, borderwidth=1, font=('bold', 14))
-        file_name_entry.grid(row=2, column=1, pady=4, sticky=W, padx=(150, 10))
+        file_name_entry.grid(row=2, column=1, pady=8, sticky=W, padx=(150, 10))
 
         download_button = Button(result_frame, text='Download', bg='#5872a8', command=thread_download_video,
                                  fg='#ffffff', font=('bold', 13), width=18)
@@ -166,12 +164,12 @@ class DownloadMenu:
         file_path_info = Label(result_frame,
                                text=f'file will be saved to {helperFunctions.file_path()}. Press "Select Folder" to change',
                                font=('normal', 7), bg="#2b2929", fg="white", wraplength=500)
-        file_path_info.grid(row=5, column=1, pady=2, sticky=W, padx=(150, 0))
+        file_path_info.grid(row=5, column=1, pady=8, sticky=W, padx=(150, 0))
 
         essential_messages = Label(result_frame,
                                    text="",
                                    font=('normal', 10), bg="#2b2929", fg="red", wraplength=600)
-        essential_messages.grid(row=7, column=1, pady=2, columnspan=2)
+        essential_messages.grid(row=7, column=1, pady=8, columnspan=2)
 
         video_progressBar = helperFunctions.ProgressBar(root_frame=result_frame, length=395)
         video_progressBar.place_progressbar(Row=6, Column=0, columnSpan=2)

@@ -47,7 +47,7 @@ class ProgressBar:
         self.label = Label(self.progressbar_frame, text="Downloaded", bg="#2b2929", fg="white", font=('bold', 14))
 
     def place_progressbar(self, Row, Column, columnSpan):
-        self.progressbar_frame.grid(row=Row, column=Column, columnspan=columnSpan, padx=5, pady=(10, 30), sticky=W)
+        self.progressbar_frame.grid(row=Row, column=Column, columnspan=columnSpan, padx=5, pady=(4, 6), sticky=W)
         # Placing internal Frame Components
         self.label.grid(row=0, column=0, pady=15, sticky=W)
         self.progressbar.grid(row=0, column=1, sticky=W, padx=(150, 10))
